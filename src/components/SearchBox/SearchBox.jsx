@@ -15,10 +15,9 @@ const SearchBox =() => {
         setState({ searchLine: e.target.value });
     }
     const searchBoxSubmitHandler = () => {
-       console.log('clicked')
+    //    console.log('clicked')
        console.log(state.searchLine)
        dispatch(fetchData(state.searchLine))
-    //    window.location.reload()
     }
 
 

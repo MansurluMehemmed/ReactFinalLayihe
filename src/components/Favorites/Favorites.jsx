@@ -1,7 +1,7 @@
 import React, { Component, useState } from 'react';
 import './Favorites.css';
 import { useDispatch, useSelector } from 'react-redux';
-import { deleteBtn } from '../../State/Slice/CardSlice';
+import { deleteAll, deleteBtn } from '../../State/Slice/CardSlice';
 import { addClick } from '../../State/Slice/PostSlice';
 
 
@@ -39,6 +39,7 @@ console.log(favori)
         
         const data = await response.json();
         dispatch(addClick(data))
+        dispatch(deleteAll())
         setState({title:'',movies:''})
       }
      else alert('Favorilər listinə ad verin')

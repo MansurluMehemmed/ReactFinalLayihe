@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit'
-import React from 'react'
+import React, { act } from 'react'
 const initialState = {
     list:[]
 }
@@ -17,9 +17,11 @@ export const CardSlice = createSlice({
         },
         deleteBtn:(state,action)=>{
             state.list = state.list.filter(item=>item.id!== action.payload.id)
+        },
+        deleteAll:(state,action)=>{
+            state.list = []
         }
-        
     }
 })
-export const {add,deleteBtn} =  CardSlice.actions
+export const {add,deleteBtn,deleteAll} =  CardSlice.actions
 export default CardSlice.reducer

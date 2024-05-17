@@ -6,6 +6,8 @@ import { add } from '../../State/Slice/CardSlice';
 
 const MovieItem = ()=> {
         const dataInitial = useSelector(state=>state.fetch.data.Search)
+        const dataLoading = useSelector(state=>state.fetch)
+        console.log(dataLoading.isLoading)
         const dispatch = useDispatch()
         useEffect(()=>{
             dispatch(fetchData('Batman'))
@@ -18,7 +20,34 @@ const MovieItem = ()=> {
                                 {/* {dataInitial.map(item=>console.log(item))} */}
 
                 {
-                    dataInitial?.map(item=>{
+                  dataLoading.isLoading? <div style={{display:'flex',margin:'auto',marginTop:'50px'}}>
+                    <div class="boxes">
+                  <div class="box">
+                      <div></div>
+                      <div></div>
+                      <div></div>
+                      <div></div>
+                  </div>
+                  <div class="box">
+                      <div></div>
+                      <div></div>
+                      <div></div>
+                      <div></div>
+                  </div>
+                  <div class="box">
+                      <div></div>
+                      <div></div>
+                      <div></div>
+                      <div></div>
+                  </div>
+                  <div class="box">
+                      <div></div>
+                      <div></div>
+                      <div></div>
+                      <div></div>
+                  </div>
+              </div> 
+                  </div>:  dataInitial && dataInitial.length >0?dataInitial?.map(item=>{
                         return(
                             <article key={item.imdbID} className="movie-item">
                             <img className="movie-item__poster" src={item.Poster} alt={item.Title} />
@@ -28,7 +57,7 @@ const MovieItem = ()=> {
                             </div>
                         </article>
                         )
-                    })
+                    }): <li>Belə bir film tapılmadı</li> 
                 }
             </div>
         );
